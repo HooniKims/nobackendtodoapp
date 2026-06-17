@@ -75,9 +75,9 @@
                     },
                     "fontFamily": {
                         "display-xl": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
-                        "body-md": ["'Noto Sans KR'", "Inter", "sans-serif"],
-                        "body-lg": ["'Noto Sans KR'", "Inter", "sans-serif"],
-                        "label-mono": ["'Noto Sans KR'", "JetBrains Mono", "sans-serif"],
+                        "body-md": ["Paperlogy", "'Noto Sans KR'", "Inter", "sans-serif"],
+                        "body-lg": ["Paperlogy", "'Noto Sans KR'", "Inter", "sans-serif"],
+                        "label-mono": ["Paperlogy", "'Noto Sans KR'", "JetBrains Mono", "sans-serif"],
                         "headline-lg-mobile": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
                         "headline-md": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
                         "headline-lg": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"]
@@ -98,25 +98,25 @@
     <style>
         @font-face {
             font-family: 'Paperlogy';
-            src: url('/fonts/Paperlogy-4Regular.woff2') format('woff2');
+            src: url('./fonts/Paperlogy-4Regular.woff2') format('woff2');
             font-weight: 400;
             font-style: normal;
         }
         @font-face {
             font-family: 'Paperlogy';
-            src: url('/fonts/Paperlogy-6SemiBold.woff2') format('woff2');
+            src: url('./fonts/Paperlogy-6SemiBold.woff2') format('woff2');
             font-weight: 600;
             font-style: normal;
         }
         @font-face {
             font-family: 'Paperlogy';
-            src: url('/fonts/Paperlogy-7Bold.woff2') format('woff2');
+            src: url('./fonts/Paperlogy-7Bold.woff2') format('woff2');
             font-weight: 700;
             font-style: normal;
         }
         @font-face {
             font-family: 'Paperlogy';
-            src: url('/fonts/Paperlogy-8ExtraBold.woff2') format('woff2');
+            src: url('./fonts/Paperlogy-8ExtraBold.woff2') format('woff2');
             font-weight: 800;
             font-style: normal;
         }
@@ -821,15 +821,15 @@
                 }
             }
             
-            // Draw a slow-shifting diagonal cosmic nebula gradient as the Milky Way
+            // Draw a shifting diagonal cosmic nebula gradient as the Milky Way
             function drawMilkyWay() {
                 ctx.save();
                 const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
                 
-                // Slightly faster shifting hue base over time (cycles in ~2.7 mins for visible transition)
-                const time = Date.now() * 0.00015;
+                // Significantly faster shifting hue base over time (cycles in ~40 seconds for beautiful dynamic transition)
+                const time = Date.now() * 0.0006;
                 currentNebulaHue1 = (time * 15) % 360;
-                currentNebulaHue2 = (currentNebulaHue1 + 130) % 360;
+                currentNebulaHue2 = (currentNebulaHue1 + 65) % 360; // Narrower hue gap for harmonious gradient without muddy complementary colors
                 
                 grad.addColorStop(0.0, 'rgba(14, 20, 23, 1)'); 
                 grad.addColorStop(0.35, `hsla(${currentNebulaHue1}, 75%, 12%, 0.18)`); 
