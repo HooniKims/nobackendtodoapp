@@ -1,0 +1,14 @@
+{
+  "name": "stitch-hyper-motion-todo-showcase",
+  "version": "1.0.0",
+  "description": "Neo-Brutalist High-Motion To-Do Showcase App",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

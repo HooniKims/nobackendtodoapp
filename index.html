@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html class="dark" lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>나의 To do 앱 - Stitch Hyper Motion Showcase</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;family=Noto+Sans+KR:wght@300;400;500;600;700;900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#feb528",
+                        "surface-variant": "#2f3639",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-container": "#6c4900",
+                        "on-tertiary-fixed-variant": "#604100",
+                        "tertiary": "#ffd9a1",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#b4ebff",
+                        "secondary-container": "#ff23e5",
+                        "secondary-fixed-dim": "#fface8",
+                        "on-tertiary": "#432c00",
+                        "on-tertiary-fixed": "#281900",
+                        "surface-container-highest": "#2f3639",
+                        "on-primary-fixed-variant": "#004e5f",
+                        "inverse-on-surface": "#2b3134",
+                        "outline": "#859398",
+                        "outline-variant": "#3c494e",
+                        "surface-container": "#1a2123",
+                        "tertiary-fixed": "#ffdeae",
+                        "inverse-surface": "#dde3e7",
+                        "surface-container-lowest": "#080f12",
+                        "surface-bright": "#333a3d",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffba3d",
+                        "on-error": "#690005",
+                        "on-secondary-fixed-variant": "#840076",
+                        "on-secondary": "#5e0053",
+                        "primary-fixed-dim": "#3cd7ff",
+                        "on-secondary-fixed": "#3a0033",
+                        "on-primary": "#003642",
+                        "on-surface-variant": "#bbc9cf",
+                        "secondary-fixed": "#ffd7f0",
+                        "inverse-primary": "#00677e",
+                        "primary": "#a8e8ff",
+                        "on-surface": "#dde3e7",
+                        "surface-container-low": "#161d1f",
+                        "surface": "#0e1417",
+                        "on-primary-container": "#00586b",
+                        "surface-container-high": "#242b2e",
+                        "secondary": "#fface8",
+                        "surface-tint": "#3cd7ff",
+                        "surface-dim": "#0e1417",
+                        "on-background": "#dde3e7",
+                        "on-primary-fixed": "#001f27",
+                        "primary-container": "#00d4ff",
+                        "on-secondary-container": "#520049",
+                        "background": "#0e1417"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "32px",
+                        "bouncy-padding": "24px 32px",
+                        "gutter": "24px",
+                        "stack-gap": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
+                        "body-md": ["'Noto Sans KR'", "Inter", "sans-serif"],
+                        "body-lg": ["'Noto Sans KR'", "Inter", "sans-serif"],
+                        "label-mono": ["'Noto Sans KR'", "JetBrains Mono", "sans-serif"],
+                        "headline-lg-mobile": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
+                        "headline-md": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"],
+                        "headline-lg": ["Paperlogy", "'Noto Sans KR'", "Anybody", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["18px", {"lineHeight": "1.5", "fontWeight": "300"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-mono": ["15px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-md": ["28px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-lg": ["46px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('/fonts/Paperlogy-4Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('/fonts/Paperlogy-6SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('/fonts/Paperlogy-7Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Paperlogy';
+            src: url('/fonts/Paperlogy-8ExtraBold.woff2') format('woff2');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+            overflow-x: hidden;
+        }
+
+        .neo-shadow {
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+        }
+
+        .neo-shadow-lg {
+            box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+        }
+
+        .neo-button {
+            transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s;
+        }
+
+        .neo-button:active {
+            transform: translate(4px, 4px) !important;
+            box-shadow: 0px 0px 0px 0px rgba(0,0,0,1) !important;
+        }
+
+        .neo-button:hover {
+            transform: scale(1.05) translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,1);
+        }
+
+        .task-pop {
+            animation: taskPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transform-origin: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .task-pop {
+                animation: none;
+            }
+            .screen-shake {
+                animation: none;
+            }
+            .wiggle {
+                animation: none;
+            }
+            .bg-shape-inner {
+                animation: none !important;
+            }
+        }
+
+        @keyframes taskPop {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .wiggle {
+            animation: wiggle 2s linear infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 7% { transform: rotateZ(0); }
+            15% { transform: rotateZ(-5deg); }
+            20% { transform: rotateZ(3deg); }
+            25% { transform: rotateZ(-5deg); }
+            30% { transform: rotateZ(2deg); }
+            35%, 100% { transform: rotateZ(0); }
+        }
+
+        .screen-shake {
+            animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .checkbox-container input:checked + div {
+            background-color: theme('colors.primary-container');
+            animation: taskPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .checkbox-container input:checked + div svg {
+            display: block;
+        }
+
+        .explosion-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            animation: explode 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1) translate(0, 0); opacity: 1; }
+            100% { transform: scale(0) translate(var(--tx), var(--ty)); opacity: 0; }
+        }
+
+        @keyframes floatBg {
+            0% { transform: translateY(0) rotate(var(--rot-start)); }
+            50% { transform: translateY(calc(var(--float-dist) * -1)) rotate(var(--rot-mid)); }
+            100% { transform: translateY(0) rotate(var(--rot-end)); }
+        }
+        .bg-shape-inner {
+            animation: floatBg var(--float-dur) ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-24 font-body-md text-body-md relative select-none md:select-text">
+    <!-- Background Antigravity Canvas -->
+    <canvas id="bg-canvas" class="fixed inset-0 z-[-1] pointer-events-none bg-[#0e1417]"></canvas>
+    
+    <!-- TopAppBar -->
+    <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-4 max-w-full bg-surface border-b-4 border-black [box-shadow:4px_4px_0px_0px_rgba(0,0,0,1)]">
+        <div class="flex items-center gap-2">
+            <span class="font-display-xl text-headline-md italic uppercase text-primary dark:text-primary">나의 To do 앱</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="hidden md:inline-block font-label-mono text-label-mono text-error uppercase wiggle px-2 py-1 bg-error-container text-on-error border-2 border-black neo-shadow">Refresh = Reset</span>
+            <button class="bg-surface-variant text-on-surface-variant font-label-mono text-label-mono px-4 py-2 border-2 border-black neo-shadow neo-button uppercase flex items-center gap-2 hover:scale-105 hover:-translate-y-1 transition-transform duration-200 active:translate-x-1 active:translate-y-1 active:shadow-none" onclick="location.reload()">
+                <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>refresh</span>
+                <span class="hidden sm:inline" id="refresh-btn-text">새로고침: 0회</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas -->
+    <main class="flex-grow w-full max-w-5xl mx-auto px-container-padding py-gutter flex flex-col gap-8 md:gap-16">
+        <!-- Hero Section -->
+        <section class="flex flex-col items-center text-center gap-stack-gap mt-8">
+            <h1 class="font-display-xl text-display-xl md:text-[80px] leading-none uppercase tracking-tighter text-surface-tint drop-shadow-[4px_4px_0_rgba(0,0,0,1)] mb-4 w-full break-words">
+                나의 To do 앱
+            </h1>
+            <p class="font-label-mono text-label-mono text-secondary-container bg-surface-container px-6 py-3 border-4 border-black neo-shadow inline-block max-w-2xl transform -rotate-1">
+                나만의 멋진 TO DO앱을 만들었어요! 어때요? 멋지죠?
+            </p>
+        </section>
+
+        <!-- Input Section -->
+        <section class="relative w-full max-w-3xl mx-auto z-10 group">
+            <form class="flex flex-col md:flex-row gap-4 items-stretch relative" id="task-form">
+                <div class="flex-grow relative">
+                    <input autocomplete="off" class="w-full bg-surface-container-highest text-on-surface text-headline-md font-headline-md p-bouncy-padding border-4 border-black neo-shadow-lg focus:outline-none focus:border-primary-container focus:ring-0 placeholder:text-outline transition-all duration-200" id="task-input" placeholder="무엇을 해야 하나요?" type="text"/>
+                    <div class="absolute -top-3 -right-3 bg-secondary-container text-on-secondary-container font-label-mono text-label-mono px-2 py-1 border-2 border-black transform rotate-12 neo-shadow pointer-events-none hidden" id="typing-indicator">
+                        입력 중...
+                    </div>
+                </div>
+                <button class="bg-primary-container text-on-primary-container font-headline-md text-headline-md uppercase px-8 py-4 border-4 border-black neo-shadow-lg neo-button flex items-center justify-center gap-2 whitespace-nowrap min-w-[160px]" type="submit">
+                    <span class="material-symbols-outlined text-[32px]" style='font-variation-settings: "FILL" 1;'>bolt</span>
+                    추가하기
+                </button>
+            </form>
+        </section>
+
+        <!-- Task List Area -->
+        <section class="w-full max-w-3xl mx-auto mt-8 flex flex-col gap-6" id="task-list">
+            <!-- Initial Placeholder Task 1 -->
+            <div class="bg-surface-variant border-4 border-black p-bouncy-padding neo-shadow-lg flex items-center justify-between gap-4 task-pop group transition-colors duration-300 has-[:checked]:bg-surface-container has-[:checked]:opacity-80">
+                <label class="checkbox-container flex items-center cursor-pointer relative">
+                    <input class="peer sr-only" type="checkbox"/>
+                    <div class="w-8 h-8 border-4 border-black bg-surface flex-shrink-0 flex items-center justify-center transition-colors">
+                        <svg class="w-6 h-6 text-on-primary-container hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="square" stroke-linejoin="miter" stroke-width="4"></path></svg>
+                    </div>
+                </label>
+                <div class="flex-grow flex flex-col gap-1 overflow-hidden">
+                    <div class="flex items-center gap-3">
+                        <span class="font-headline-md text-headline-md text-on-surface-variant transition-all cursor-pointer select-none truncate group-has-[:checked]:line-through group-has-[:checked]:opacity-50">실존적 불안 극복하기</span>
+                        <span class="completed-badge hidden group-has-[:checked]:inline-block font-label-mono text-[14px] bg-[#ccff00] text-black px-2 py-1 border-2 border-black neo-shadow transform -rotate-2 whitespace-nowrap">완료됨</span>
+                    </div>
+                    <span class="font-label-mono text-[12px] text-outline">2026. 06. 17. 10:00</span>
+                </div>
+                <button aria-label="Delete task" class="text-error bg-surface border-4 border-black w-12 h-12 flex items-center justify-center neo-shadow neo-button hover:bg-error-container delete-btn">
+                    <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>delete</span>
+                </button>
+            </div>
+            
+            <!-- Initial Placeholder Task 2 -->
+            <div class="bg-surface-variant border-4 border-black p-bouncy-padding neo-shadow-lg flex items-center justify-between gap-4 task-pop group transition-colors duration-300 has-[:checked]:bg-surface-container has-[:checked]:opacity-80" style="animation-delay: 0.1s;">
+                <label class="checkbox-container flex items-center cursor-pointer relative">
+                    <input class="peer sr-only" type="checkbox"/>
+                    <div class="w-8 h-8 border-4 border-black bg-surface flex-shrink-0 flex items-center justify-center transition-colors">
+                        <svg class="w-6 h-6 text-on-primary-container hidden" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="square" stroke-linejoin="miter" stroke-width="4"></path></svg>
+                    </div>
+                </label>
+                <div class="flex-grow flex flex-col gap-1 overflow-hidden">
+                    <div class="flex items-center gap-3">
+                        <span class="font-headline-md text-headline-md text-on-surface-variant transition-all cursor-pointer select-none truncate group-has-[:checked]:line-through group-has-[:checked]:opacity-50">공허함 속에서 의미 찾기</span>
+                        <span class="completed-badge hidden group-has-[:checked]:inline-block font-label-mono text-[14px] bg-[#ccff00] text-black px-2 py-1 border-2 border-black neo-shadow transform -rotate-2 whitespace-nowrap">완료됨</span>
+                    </div>
+                    <span class="font-label-mono text-[12px] text-outline">2026. 06. 17. 10:05</span>
+                </div>
+                <button aria-label="Delete task" class="text-error bg-surface border-4 border-black w-12 h-12 flex items-center justify-center neo-shadow neo-button hover:bg-error-container delete-btn">
+                    <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>delete</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Graphic Element -->
+        <div class="w-full flex justify-center mt-12 opacity-50 pointer-events-none">
+            <div class="w-64 h-64 border-8 border-secondary-container rounded-full neo-shadow animate-ping" style="animation-duration: 3s;"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-gutter px-container-padding flex flex-col md:flex-row justify-between items-center gap-stack-gap bg-surface-container dark:bg-surface-container border-t-4 border-black mt-auto">
+        <span class="font-display-xl text-headline-md text-secondary">나의 To do 앱</span>
+        <span class="font-label-mono text-label-mono text-secondary dark:text-secondary text-center">데이터는 브라우저 탭에만 존재합니다</span>
+        <div class="flex gap-4">
+            <a class="font-label-mono text-label-mono text-on-surface hover:text-tertiary transition-colors uppercase border-b-2 border-transparent hover:border-tertiary cursor-pointer" id="reset-session-btn">세션 초기화</a>
+            <a class="font-label-mono text-label-mono text-on-surface hover:text-tertiary transition-colors uppercase border-b-2 border-transparent hover:border-tertiary" href="https://github.com" target="_blank">깃허브</a>
+            <a class="font-label-mono text-label-mono text-on-surface hover:text-tertiary transition-colors uppercase border-b-2 border-transparent hover:border-tertiary" href="#">이용약관</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Manage Refresh Count
+            let refreshCount = localStorage.getItem('todo_refresh_count') || 0;
+            refreshCount = parseInt(refreshCount) + 1;
+            localStorage.setItem('todo_refresh_count', refreshCount);
+            
+            const refreshBtnText = document.getElementById('refresh-btn-text');
+            if (refreshBtnText) {
+                refreshBtnText.textContent = `새로고침: ${refreshCount}회`;
+            }
+
+            // Session Reset button
+            const resetBtn = document.getElementById('reset-session-btn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('todo_refresh_count');
+                    location.reload();
+                });
+            }
+
+            // --- HTML5 Canvas 3D Spacecraft Engine (Cosmic Abyss Travel & 2D Mouse Trail) ---
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            let particles = [];
+            let planets = [];
+            let shootingStars = [];
+            let trailParticles = [];
+            
+            const particleCount = 200;
+            const planetCount = 5; 
+            
+            // 3D Engine Constants (Constant calm speed towards the deep abyss)
+            const focalLength = 240; 
+            const flightSpeed = 1.2; 
+            
+            let currentMouseX = window.innerWidth / 2;
+            let currentMouseY = window.innerHeight / 2;
+            let lastMouseX = window.innerWidth / 2;
+            let lastMouseY = window.innerHeight / 2;
+            let mouseActive = false;
+            
+            let trailHue = 0;
+            const trailThreshold = 4;
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                initParticles();
+                initPlanets();
+                shootingStars = [];
+                trailParticles = [];
+            }
+            
+            class Planet3D {
+                constructor(zInit = null, type = null) {
+                    this.init(zInit, type);
+                }
+                
+                init(zInit = null, type = null) {
+                    // Spread planets extremely wide to fill the whole screen space under 3D perspective
+                    this.x = (Math.random() - 0.5) * 2500;
+                    this.y = (Math.random() - 0.5) * 2500;
+                    this.z = zInit !== null ? zInit : Math.random() * 1000 + 100;
+                    
+                    // Determine celestial body type: Terrestrial (Earth-like), Gas Giant (Jupiter-like with rings), or Star (Sun-like corona)
+                    this.type = type !== null ? type : ['terrestrial', 'gas_giant', 'gas_giant', 'star'][Math.floor(Math.random() * 4)];
+                    
+                    if (this.type === 'star') {
+                        this.baseRadius = Math.random() * 22 + 35; // Stars are larger
+                        this.color = '#ffb4ab'; 
+                        this.hasRing = false;
+                    } else if (this.type === 'gas_giant') {
+                        this.baseRadius = Math.random() * 25 + 24; 
+                        this.color = ['#feb528', '#ff23e5', '#ffd7f0'][Math.floor(Math.random() * 3)];
+                        this.hasRing = Math.random() > 0.35; 
+                    } else {
+                        // Terrestrial planet
+                        this.baseRadius = Math.random() * 15 + 16; 
+                        this.color = ['#00d4ff', '#ccff00', '#a8e8ff'][Math.floor(Math.random() * 3)];
+                        this.hasRing = false;
+                    }
+                    
+                    // Terrestrial continent shapes generator
+                    this.continents = [];
+                    if (this.type === 'terrestrial') {
+                        const numContinents = Math.floor(Math.random() * 3) + 2;
+                        for (let i = 0; i < numContinents; i++) {
+                            this.continents.push({
+                                ox: (Math.random() - 0.5) * 0.8,
+                                oy: (Math.random() - 0.5) * 0.8,
+                                r: Math.random() * 0.45 + 0.2,
+                                col: ['#ccff00', '#feb528', '#859398'][Math.floor(Math.random() * 3)]
+                            });
+                        }
+                    }
+
+                    // Gas giant bands & red spot generator
+                    this.stripes = [];
+                    if (this.type === 'gas_giant') {
+                        const numStripes = Math.floor(Math.random() * 3) + 3;
+                        for (let i = 0; i < numStripes; i++) {
+                            this.stripes.push({
+                                yRatio: (Math.random() - 0.5) * 1.4,
+                                heightRatio: Math.random() * 0.16 + 0.06,
+                                col: Math.random() > 0.5 ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.15)'
+                            });
+                        }
+                        this.spotX = (Math.random() * 0.4 + 0.1) * (Math.random() > 0.5 ? 1 : -1);
+                        this.spotY = (Math.random() - 0.5) * 0.4;
+                        this.spotR = Math.random() * 0.16 + 0.1;
+                    }
+
+                    // Star flare rotation speed
+                    this.starRot = Math.random() * Math.PI * 2;
+                    this.starRotSpeed = (Math.random() - 0.5) * 0.004;
+                }
+                
+                update() {
+                    this.z -= flightSpeed;
+                    
+                    if (this.type === 'star') {
+                        this.starRot += this.starRotSpeed;
+                    }
+                    
+                    if (this.z < -this.baseRadius - 60) {
+                        this.init(1000);
+                    }
+                }
+                
+                draw() {
+                    if (this.z <= -this.baseRadius) return;
+                    
+                    const scale = focalLength / (focalLength + this.z);
+                    const mouseOffsetX = mouseActive ? (currentMouseX - canvas.width / 2) * 0.35 : 0;
+                    const mouseOffsetY = mouseActive ? (currentMouseY - canvas.height / 2) * 0.35 : 0;
+                    
+                    const screenX = (canvas.width / 2) + (this.x - mouseOffsetX) * scale;
+                    const screenY = (canvas.height / 2) + (this.y - mouseOffsetY) * scale;
+                    const r = this.baseRadius * scale;
+                    
+                    let alpha = 1.0;
+                    if (this.z > 800) {
+                        alpha = (1000 - this.z) / 200; 
+                    } else if (this.z < 0) {
+                        alpha = Math.max(0, (this.baseRadius + this.z) / this.baseRadius); 
+                    }
+                    
+                    if (alpha <= 0) return;
+                    
+                    ctx.save();
+                    ctx.globalAlpha = alpha;
+                    
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = Math.max(1.2, 4.5 * scale);
+                    
+                    // --- 1. STAR TYPE DRAWING ---
+                    if (this.type === 'star') {
+                        ctx.save();
+                        ctx.translate(screenX, screenY);
+                        ctx.rotate(this.starRot);
+                        
+                        // Spikey sunburst corona rays
+                        ctx.fillStyle = 'rgba(255, 172, 232, 0.16)'; 
+                        ctx.beginPath();
+                        const spikes = 8;
+                        const outerR = r * 1.5;
+                        const innerR = r * 0.9;
+                        for (let i = 0; i < spikes * 2; i++) {
+                            const angle = (i * Math.PI) / spikes;
+                            const dist = i % 2 === 0 ? outerR : innerR;
+                            ctx.lineTo(Math.cos(angle) * dist, Math.sin(angle) * dist);
+                        }
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.restore();
+                        
+                        // Glow core ring
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r * 1.25, 0, Math.PI * 2);
+                        ctx.fillStyle = 'rgba(255, 254, 181, 0.25)';
+                        ctx.fill();
+                        
+                        // Center star sphere
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                    
+                    // --- 2. GAS GIANT DRAWING ---
+                    else if (this.type === 'gas_giant') {
+                        if (this.hasRing) {
+                            ctx.beginPath();
+                            ctx.ellipse(screenX, screenY, r * 1.9, r * 0.42, Math.PI / 6, Math.PI, 0); 
+                            ctx.stroke();
+                        }
+                        
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+                        ctx.clip();
+                        
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                        
+                        // Render horizontal bands
+                        this.stripes.forEach(s => {
+                            ctx.fillStyle = s.col;
+                            const stripeY = screenY + s.yRatio * r;
+                            const stripeH = s.heightRatio * r;
+                            ctx.fillRect(screenX - r * 2, stripeY - stripeH / 2, r * 4, stripeH);
+                        });
+                        
+                        // Red storm spot
+                        ctx.beginPath();
+                        ctx.arc(screenX + this.spotX * r, screenY + this.spotY * r, this.spotR * r, 0, Math.PI * 2);
+                        ctx.fillStyle = '#ff23e5';
+                        ctx.fill();
+                        ctx.stroke();
+                        
+                        ctx.restore();
+                        
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+                        ctx.stroke();
+                        
+                        if (this.hasRing) {
+                            ctx.beginPath();
+                            ctx.ellipse(screenX, screenY, r * 1.9, r * 0.42, Math.PI / 6, 0, Math.PI); 
+                            ctx.stroke();
+                        }
+                    }
+                    
+                    // --- 3. TERRESTRIAL PLANET DRAWING ---
+                    else {
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+                        ctx.clip();
+                        
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
+                        
+                        // Draw continental blobs
+                        this.continents.forEach(c => {
+                            ctx.fillStyle = c.col;
+                            ctx.beginPath();
+                            ctx.arc(screenX + c.ox * r, screenY + c.oy * r, c.r * r, 0, Math.PI * 2);
+                            ctx.fill();
+                        });
+                        
+                        ctx.restore();
+                        
+                        ctx.beginPath();
+                        ctx.arc(screenX, screenY, r, 0, Math.PI * 2);
+                        ctx.stroke();
+                    }
+                    
+                    ctx.restore();
+                }
+            }
+            
+            class Particle3D {
+                constructor() {
+                    this.init();
+                    this.z = Math.random() * 1000; 
+                }
+                
+                init() {
+                    // Spread particles extremely wide to avoid center-clustering under 3D projection
+                    this.x = (Math.random() - 0.5) * 3500;
+                    this.y = (Math.random() - 0.5) * 3500;
+                    this.z = 1000;
+                    this.size = Math.random() * 1.5 + 1.2;
+                    this.hue = Math.random() * 360;
+                    this.brightness = Math.random() * 20 + 58;
+                }
+                
+                update() {
+                    this.z -= flightSpeed;
+                    
+                    // Gentle orbital gravity pull from planets as they pass by
+                    planets.forEach(target => {
+                        if (Math.abs(this.z - target.z) < 150) {
+                            const dx = target.x - this.x;
+                            const dy = target.y - this.y;
+                            const dist = Math.hypot(dx, dy) || 1;
+                            if (dist < 260) {
+                                const pull = 0.05 * (150 - Math.abs(this.z - target.z)) / 150;
+                                this.x += (dx / dist) * pull * 3.5;
+                                this.y += (dy / dist) * pull * 3.5;
+                                this.x += (-dy / dist) * pull * 4.0;
+                                this.y += (dx / dist) * pull * 4.0;
+                            }
+                        }
+                    });
+                    
+                    if (this.z <= 0) {
+                        this.init();
+                    }
+                }
+                
+                draw() {
+                    const scale = focalLength / (focalLength + this.z);
+                    const mouseOffsetX = mouseActive ? (currentMouseX - canvas.width / 2) * 0.35 : 0;
+                    const mouseOffsetY = mouseActive ? (currentMouseY - canvas.height / 2) * 0.35 : 0;
+                    
+                    const screenX = (canvas.width / 2) + (this.x - mouseOffsetX) * scale;
+                    const screenY = (canvas.height / 2) + (this.y - mouseOffsetY) * scale;
+                    
+                    if (screenX < -50 || screenX > canvas.width + 50 || screenY < -50 || screenY > canvas.height + 50) return;
+                    
+                    ctx.save();
+                    
+                    ctx.beginPath();
+                    ctx.strokeStyle = `hsl(${this.hue}, 100%, ${this.brightness}%)`;
+                    ctx.lineWidth = this.size * Math.max(0.5, scale);
+                    ctx.lineCap = 'round';
+                    
+                    const speed = flightSpeed * scale;
+                    const dx = screenX - canvas.width / 2;
+                    const dy = screenY - canvas.height / 2;
+                    const distToCenter = Math.hypot(dx, dy) || 1;
+                    
+                    const stretch = Math.max(speed * 1.8, 3.5);
+                    ctx.moveTo(screenX, screenY);
+                    ctx.lineTo(screenX - (dx / distToCenter) * stretch, screenY - (dy / distToCenter) * stretch);
+                    ctx.stroke();
+                    
+                    ctx.restore();
+                }
+            }
+            
+            class ShootingStar {
+                constructor() {
+                    this.reset();
+                }
+                
+                reset() {
+                    this.x = Math.random() * canvas.width * 0.7;
+                    this.y = -60;
+                    this.vx = Math.random() * 6 + 6; 
+                    this.vy = Math.random() * 6 + 6;
+                    this.length = Math.random() * 80 + 70;
+                    this.width = Math.random() * 2 + 1.6;
+                    this.hue = Math.random() * 360;
+                    this.active = true;
+                    this.alpha = 1.0;
+                    this.decay = Math.random() * 0.012 + 0.01;
+                }
+                
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.alpha -= this.decay;
+                    if (this.alpha <= 0 || this.x > canvas.width + 60 || this.y > canvas.height + 60) {
+                        this.active = false;
+                    }
+                }
+                
+                draw() {
+                    if (!this.active) return;
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    
+                    const grad = ctx.createLinearGradient(
+                        this.x, this.y, 
+                        this.x - this.vx * (this.length / Math.hypot(this.vx, this.vy)), 
+                        this.y - this.vy * (this.length / Math.hypot(this.vx, this.vy))
+                    );
+                    grad.addColorStop(0, `hsl(${this.hue}, 100%, 70%)`);
+                    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                    
+                    ctx.beginPath();
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = this.width;
+                    ctx.lineCap = 'round';
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(
+                        this.x - this.vx * (this.length / Math.hypot(this.vx, this.vy)), 
+                        this.y - this.vy * (this.length / Math.hypot(this.vx, this.vy))
+                    );
+                    ctx.stroke();
+                    
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.width * 1.3, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+            
+            class TrailParticle2D {
+                constructor(x, y) {
+                    const offsetX = (Math.random() - 0.5) * 35;
+                    const offsetY = (Math.random() - 0.5) * 35;
+                    this.x = x + offsetX;
+                    this.y = y + offsetY;
+                    
+                    this.startX = this.x;
+                    this.startY = this.y;
+                    
+                    this.size = Math.random() * 4 + 4; 
+                    
+                    trailHue = (trailHue + 1.2) % 360; 
+                    this.color = `hsl(${trailHue}, 100%, 60%)`;
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 1.5 + 0.6;
+                    this.vx = Math.cos(angle) * speed;
+                    this.vy = Math.sin(angle) * speed;
+                    
+                    this.opacity = 1.0;
+                    this.scale = 1.0;
+                    this.active = true;
+                }
+                
+                update() {
+                    const dx = currentMouseX - this.x;
+                    const dy = currentMouseY - this.y;
+                    const dist = Math.hypot(dx, dy) || 1;
+                    
+                    const pull = 0.08;
+                    this.vx += (dx / dist) * pull;
+                    this.vy += (dy / dist) * pull;
+                    
+                    this.vx *= 0.94;
+                    this.vy *= 0.94;
+                    
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    
+                    this.opacity -= 0.016;
+                    this.scale -= 0.012;
+                    
+                    if (this.opacity <= 0 || this.scale <= 0) {
+                        this.active = false;
+                    }
+                }
+                
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.opacity;
+                    ctx.fillStyle = this.color;
+                    ctx.strokeStyle = '#000000';
+                    ctx.lineWidth = 1.5;
+                    
+                    const currentSize = this.size * this.scale;
+                    ctx.beginPath();
+                    ctx.rect(this.x - currentSize / 2, this.y - currentSize / 2, currentSize, currentSize);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+            
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle3D());
+                }
+            }
+            
+            function initPlanets() {
+                planets = [];
+                for (let i = 0; i < planetCount; i++) {
+                    // Stagger along Z axis for spacing
+                    planets.push(new Planet3D(150 + i * 200)); 
+                }
+            }
+            
+            // Draw a slow-shifting diagonal cosmic nebula gradient as the Milky Way
+            function drawMilkyWay() {
+                ctx.save();
+                const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                
+                // Slow shifting hue base over time
+                const time = Date.now() * 0.00003;
+                const hue1 = (time * 12) % 360;
+                const hue2 = (hue1 + 140) % 360;
+                
+                grad.addColorStop(0.0, 'rgba(14, 20, 23, 1)'); 
+                grad.addColorStop(0.35, `hsla(${hue1}, 80%, 15%, 0.15)`); 
+                grad.addColorStop(0.5, `hsla(${hue2}, 85%, 22%, 0.20)`); // Bright core of the galaxy
+                grad.addColorStop(0.65, `hsla(${hue1}, 80%, 15%, 0.15)`);
+                grad.addColorStop(1.0, 'rgba(14, 20, 23, 1)');
+                
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.restore();
+            }
+            
+            function animateParticles() {
+                // Draw background nebula galaxy layer first
+                drawMilkyWay();
+                
+                // 1. Draw Planets (approaching forward in straight line)
+                planets.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                // 2. Spawn and render Shooting Stars
+                if (Math.random() < 0.006 && shootingStars.length < 2) {
+                    shootingStars.push(new ShootingStar());
+                }
+                shootingStars = shootingStars.filter(s => s.active);
+                shootingStars.forEach(s => {
+                    s.update();
+                    s.draw();
+                });
+                
+                // 3. Draw 3D Space Dust particles (projecting forwards)
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                
+                // 4. Draw and update 2D Rainbow Mouse Trail pixels (retained)
+                trailParticles = trailParticles.filter(tp => tp.active);
+                trailParticles.forEach(tp => {
+                    tp.update();
+                    tp.draw();
+                });
+                
+                requestAnimationFrame(animateParticles);
+            }
+            
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Mouse track events
+            document.addEventListener('mousemove', (e) => {
+                currentMouseX = e.clientX;
+                currentMouseY = e.clientY;
+                mouseActive = true;
+                
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    const dist = Math.hypot(currentMouseX - lastMouseX, currentMouseY - lastMouseY);
+                    if (dist > trailThreshold) {
+                        for (let i = 0; i < 2; i++) {
+                            trailParticles.push(new TrailParticle2D(currentMouseX, currentMouseY));
+                        }
+                        lastMouseX = currentMouseX;
+                        lastMouseY = currentMouseY;
+                    }
+                }
+            });
+            
+            document.addEventListener('mouseleave', () => {
+                mouseActive = false;
+            });
+            
+            document.addEventListener('mouseenter', (e) => {
+                currentMouseX = e.clientX;
+                currentMouseY = e.clientY;
+                mouseActive = true;
+            });
+            
+            // Run engine
+            resizeCanvas();
+            requestAnimationFrame(animateParticles);
+
+            // Original Functionality
+            const form = document.getElementById('task-form');
+            const input = document.getElementById('task-input');
+            const list = document.getElementById('task-list');
+            const typingIndicator = document.getElementById('typing-indicator');
+
+            // Input interactions
+            input.addEventListener('input', () => {
+                if (input.value.length > 0) {
+                    typingIndicator.classList.remove('hidden');
+                } else {
+                    typingIndicator.classList.add('hidden');
+                }
+            });
+
+            // Form Submit
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = input.value.trim();
+                if (!text) return;
+
+                const now = new Date();
+                const dateStr = `${now.getFullYear()}. ${String(now.getMonth() + 1).padStart(2, '0')}. ${String(now.getDate()).padStart(2, '0')}. ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+                // Create Task Element
+                const taskEl = document.createElement('div');
+                taskEl.className = 'bg-surface-variant border-4 border-black p-bouncy-padding neo-shadow-lg flex items-center justify-between gap-4 task-pop group transition-colors duration-300 has-[:checked]:bg-surface-container has-[:checked]:opacity-80';
+                taskEl.innerHTML = `
+                    <label class="checkbox-container flex items-center cursor-pointer relative">
+                        <input type="checkbox" class="peer sr-only">
+                        <div class="w-8 h-8 border-4 border-black bg-surface flex-shrink-0 flex items-center justify-center transition-colors">
+                            <svg class="w-6 h-6 text-on-primary-container hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="4" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                    </label>
+                    <div class="flex-grow flex flex-col gap-1 overflow-hidden">
+                        <div class="flex items-center gap-3">
+                            <span class="font-headline-md text-headline-md text-on-surface-variant transition-all cursor-pointer select-none truncate group-has-[:checked]:line-through group-has-[:checked]:opacity-50">${text}</span>
+                            <span class="completed-badge hidden group-has-[:checked]:inline-block font-label-mono text-[14px] bg-[#ccff00] text-black px-2 py-1 border-2 border-black neo-shadow transform -rotate-2 whitespace-nowrap">완료됨</span>
+                        </div>
+                        <span class="font-label-mono text-[12px] text-outline">${dateStr}</span>
+                    </div>
+                    <button class="text-error bg-surface border-4 border-black w-12 h-12 flex items-center justify-center neo-shadow neo-button hover:bg-error-container delete-btn" aria-label="Delete task">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">delete</span>
+                    </button>
+                `;
+
+                // Add to list top
+                list.insertBefore(taskEl, list.firstChild);
+                
+                // Screen shake on add
+                document.body.classList.remove('screen-shake');
+                void document.body.offsetWidth; // trigger reflow
+                document.body.classList.add('screen-shake');
+
+                // Fireworks effect on submit button
+                const btn = form.querySelector('button');
+                const rect = btn.getBoundingClientRect();
+                createFireworks(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+                // Reset input
+                input.value = '';
+                typingIndicator.classList.add('hidden');
+                input.focus();
+
+                // Attach delete event to the new element
+                taskEl.querySelector('.delete-btn').addEventListener('click', (e) => {
+                    const t = e.currentTarget.closest('.task-pop');
+                    t.style.animation = 'none';
+                    t.style.transition = 'all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    t.style.transform = 'scale(0) rotate(10deg)';
+                    t.style.opacity = '0';
+                    setTimeout(() => t.remove(), 200);
+                });
+            });
+
+            // Global click explosion and interaction feedback
+            document.addEventListener('click', (e) => {
+                if(e.target.closest('button') && !e.target.closest('form')) {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    createExplosion(x, y, ['#ff23e5', '#a8e8ff', '#ffffff'], 5);
+                } else if (e.target.closest('input[type="checkbox"]')) {
+                    const x = e.clientX;
+                    const y = e.clientY;
+                    createExplosion(x, y, ['#ff23e5', '#a8e8ff', '#ffffff'], 5);
+                }
+                
+                createGlobalBurst(e.clientX, e.clientY);
+            });
+
+            function createGlobalBurst(x, y) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                
+                const colors = ['#ff23e5', '#ccff00', '#00d4ff', '#feb528']; // Pink, Lime, Blue, Yellow
+                const shapes = ['rounded-full', 'rounded-none', 'rotate-45']; // Circle, Square, Diamond
+                const particleCount = Math.floor(Math.random() * 4) + 5; // 5 to 8
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const shapeClass = shapes[Math.floor(Math.random() * shapes.length)];
+                    const size = Math.random() * 20 + 15;
+                    
+                    particle.className = `fixed border-2 border-black neo-shadow ${shapeClass}`;
+                    particle.style.backgroundColor = color;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${x - size/2}px`;
+                    particle.style.top = `${y - size/2}px`;
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '9998';
+                    
+                    document.body.appendChild(particle);
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 12 + 6;
+                    let vx = Math.cos(angle) * velocity;
+                    let vy = Math.sin(angle) * velocity - 8;
+                    let currentX = x - size/2;
+                    let currentY = y - size/2;
+                    let opacity = 1;
+                    let rotation = 0;
+                    const rotSpeed = (Math.random() - 0.5) * 15;
+                    
+                    function animate() {
+                        vy += 0.5;
+                        currentX += vx;
+                        currentY += vy;
+                        opacity -= 0.015;
+                        rotation += rotSpeed;
+                        
+                        particle.style.transform = `translate(${currentX - (x - size/2)}px, ${currentY - (y - size/2)}px) rotate(${rotation}deg)`;
+                        particle.style.opacity = opacity;
+                        
+                        if (opacity > 0) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            particle.remove();
+                        }
+                    }
+                    
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            function createExplosion(x, y, colors, count = 12) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                
+                for (let i = 0; i < count; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'explosion-particle border-2 border-black bg-[' + colors[Math.floor(Math.random() * colors.length)] + ']';
+                    
+                    const shapes = ['rounded-full', 'rounded-none', 'rotate-45'];
+                    particle.classList.add(shapes[Math.floor(Math.random() * shapes.length)]);
+                    
+                    const size = Math.random() * 16 + 8;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    
+                    particle.style.left = `${x - size/2}px`;
+                    particle.style.top = `${y - size/2}px`;
+
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 100 + 50;
+                    particle.style.setProperty('--tx', `${Math.cos(angle) * distance}px`);
+                    particle.style.setProperty('--ty', `${Math.sin(angle) * distance}px`);
+
+                    document.body.appendChild(particle);
+
+                    setTimeout(() => particle.remove(), 600);
+                }
+            }
+            
+            function createFireworks(x, y) {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                
+                const colors = ['#ff00ff', '#ccff00', '#00d4ff'];
+                const particleCount = 40;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const size = Math.random() * 10 + 6;
+                    const isCircle = Math.random() > 0.5;
+                    
+                    particle.style.position = 'fixed';
+                    particle.style.left = `${x}px`;
+                    particle.style.top = `${y}px`;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.backgroundColor = color;
+                    particle.style.border = '2px solid black';
+                    if (isCircle) particle.style.borderRadius = '50%';
+                    particle.style.pointerEvents = 'none';
+                    particle.style.zIndex = '9999';
+                    
+                    document.body.appendChild(particle);
+                    
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 15 + 5;
+                    let vx = Math.cos(angle) * velocity;
+                    let vy = Math.sin(angle) * velocity - 8;
+                    let currentX = x;
+                    let currentY = y;
+                    let opacity = 1;
+                    
+                    function animate() {
+                        vy += 0.4;
+                        currentX += vx;
+                        currentY += vy;
+                        opacity -= 0.015;
+                        
+                        particle.style.transform = `translate(${currentX - x}px, ${currentY - y}px)`;
+                        particle.style.opacity = opacity;
+                        
+                        if (opacity > 0) {
+                            requestAnimationFrame(animate);
+                        } else {
+                            particle.remove();
+                        }
+                    }
+                    
+                    requestAnimationFrame(animate);
+                }
+            }
+            
+            // Initial attach delete events to existing items
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                 btn.addEventListener('click', (e) => {
+                    const t = e.currentTarget.closest('.task-pop');
+                    t.style.animation = 'none';
+                    t.style.transition = 'all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    t.style.transform = 'scale(0) rotate(10deg)';
+                    t.style.opacity = '0';
+                    setTimeout(() => t.remove(), 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
